@@ -18,3 +18,9 @@ export const sourceObjectToCrawl = {
 	removedProperty: undefined,
 	additionalInfo: {},
 };
+
+export const emptyEntityDenotation = {
+	emptyObject: "<empty object>",
+	emptyArray: "<empty array>",
+	null: "null",
+};

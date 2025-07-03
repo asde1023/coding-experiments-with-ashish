@@ -1,4 +1,5 @@
-import { syncCrawl } from "json-crawl";
+import { syncCrawl } from "@netcracker/qubership-apihub-json-crawl";
+import { emptyEntityDenotation } from "../constants/common.constants";
 
 /**
  * Prints an object in a tree-like structure to the console.
@@ -29,17 +30,18 @@ export const printObject = (obj: Record<string, unknown>): void => {
 		if (path.length === 0 || value === undefined) return;
 
 		const indent = "  ".repeat(path.length - 1);
+		const keyName = key.toString();
 
 		if (value === null) {
-			console.log(`${indent}${key}: null`);
+			console.log(`${indent}${keyName}: ${emptyEntityDenotation.null}`);
 		} else if (isEmptyObject(value)) {
-			console.log(`${indent}${key}: <empty object>`);
+			console.log(`${indent}${keyName}: ${emptyEntityDenotation.emptyObject}`);
 		} else if (isEmptyArray(value)) {
-			console.log(`${indent}${key}: <empty array>`);
+			console.log(`${indent}${keyName}: ${emptyEntityDenotation.emptyArray}`);
 		} else if (isLeaf(value)) {
-			console.log(`${indent}${key}: ${value}`);
+			console.log(`${indent}${keyName}: ${value}`);
 		} else {
-			console.log(`${indent}${key}:`);
+			console.log(`${indent}${keyName}:`);
 		}
 	});
 };
